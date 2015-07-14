@@ -1,0 +1,68 @@
+{{if tpl == 'main'}}
+<div class="property_hotline">
+    <div class="form-inline">
+        <button class="btn btn-primary property_hotline_add_button">新增</button>
+    </div>
+    <div class="eh_h10"></div>
+    <div class="property_hotline_add_content"></div>
+
+    <table class="table table-striped property_hotline_list">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th>电话</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div class="gov_hotline_page"></div>
+</div>
+{{else if tpl == "list"}}
+{{each data}}
+<tr data-memberId="{{$value.id}}" data-name="{{$value.contactName}}" data-phone="{{$value.contactToken}}">
+    <td>{{$value.contactName}}</td>
+    <td>{{$value.contactToken}}</td>
+    <td>
+        <button class="btn btn-default btn-xs property_hotline_edit">编辑</button>
+        <button class="btn btn-default btn-xs property_hotline_delete">删除</button>
+    </td>
+</tr>
+{{/each}}
+{{else if tpl == "add"}}
+<form class="row property_hotline_add eh_form_valid">
+    <div class="form-group col-md-3">
+        <input class="form-control property_input_add_name" placeholder="政府部门" datatype="*">
+    </div>
+    <div class="form-group col-md-3">
+        <input class="form-control property_input_add_phone" placeholder="电话号码" datatype="*">
+    </div>
+    <div class="btn-group col-md-6" role="group">
+        <button type="submit" class="btn btn-primary">保存</button>
+        <button class="btn btn-default property_hotline_cancel_add">取消</button>
+    </div>
+</form>
+{{else if tpl == "edit"}}
+<form class="form-horizontal property_hotline_edit">
+    <div class="eh_h20"></div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">名称</label>
+        <div class="col-md-7">
+            <input class="form-control property_input_edit_name" value="{{contactName}}" placeholder="政府名称">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">电话</label>
+        <div class="col-md-7">
+            <input class="form-control property_input_edit_phone" value="{{contactToken}}" placeholder="电话号码">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-8">
+            <button class="btn btn-primary property_hotline_edit_ok">保存</button>
+            <button class="btn btn-default property_hotline_cancel_edit">取消</button>
+        </div>
+    </div>
+</form>
+{{/if}}
